@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                                <ul
+                                <ul>
                                     <li>
                                         <a href="{{ url('/getListeFrais') }}">
                                             <button type="submit" class="btn btn-default btn-primary">
