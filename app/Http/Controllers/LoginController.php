@@ -30,9 +30,9 @@ class LoginController extends Controller
 
             if ($connected) {
                 if (Session::get('type') === 'P') {
-                    return view('vues/homePracticien');
+                    return view('vues/connected');
                 } else {
-                    return view('home');
+                    return view('vues/connected');
                 }
             } else {
                 $erreur = "Login ou mot de passe inconnu";

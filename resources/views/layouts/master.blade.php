@@ -30,39 +30,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ url('/getLogout') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
                     </ul>
-                    <div class="col-md-12 well well-md">
-                        <center><h1>Bienvenue André</h1></center>
-                        <center><h2>Voulez vous...</h2></center>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <ul>
-                                    <li>
-                                        <a href="{{ url('/getListeFrais') }}">
-                                            <button type="submit" class="btn btn-default btn-primary">
-                                                <span class="glyphicon glyphicon-log-in"></span> Lister
-                                            </button>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <ul>
-                                    <li>
-                                        <a href="{{ url('/getListeFrais') }}">
-                                            <button type="submit" class="btn btn-default btn-primary">
-                                                <span class="glyphicon glyphicon-log-in"></span> Ajouter
-                                            </button>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                        </div>
                     </div>
                 </div>
             @endif

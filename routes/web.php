@@ -25,4 +25,9 @@ Route::get('/formLogin', [LoginController::class, 'getLogin']);
 
 Route::get('/getLogout', [LoginController::class, 'signOut']);
 
-Route::get('/getListeFrais', [ListeController::class, 'getListeMedicaments']);
+Route::get('/getListeMedicament', [ListeController::class, 'getListeMedicaments']);
+Route::get('/modifierMedicament/{id}', [ListeController::class, 'updateMedicament']);
+
+
+Route::get('/ajouterMedicament', [ListeController::class, 'addMedicament']);
+Route::post('/validerMedicament', [ListeController::class, 'validateMedicament']);
