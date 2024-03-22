@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
 
-    {!! Form::open(['url' => 'validerMedicament']) !!}
+    {!! Form::open(['url' => 'validerMedicament2']) !!}
     <div class="col-md-12 col-sm-12 well well-md">
-        <center><h1>Formulaire d'ajouts de médicaments</h1></center>
+        <center><h1>Formulaire de Modification de Médicament</h1></center>
         <div class="form-horizontal">
-            <input type="hidden" name="id_medicament" value=""/>
+            <input type="hidden" name="id_medicament" value="{{ $unMedicament->id_medicament }}">
 
 
             <div class="form-group">

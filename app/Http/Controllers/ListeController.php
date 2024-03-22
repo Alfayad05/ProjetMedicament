@@ -27,15 +27,21 @@ class ListeController
         }
     }
 
-    public function updateMedicament($id_medicament)
+    public function validateMedicament()
     {
         try {
-            $monErreur = "";
             $erreur = "";
+
+            $id_famille = Request::input('id_famille');
+            $depot_legal = Request::input('depot_legal');
+            $nom_commercial = Request::input('nom_commercial');
+            $effets = Request::input('effets');
+            $contre_indication = Request::input('contre_indication');
+            $prix_echantillon = Request::input('prix_echantillon');
             $unServiceMedicament = new ServiceMedicaments();
-            $unMedicament = $unServiceMedicament->getById($id_medicament);
-            $titrevue = "Modification d'une fiche de Frais";
-            return view('vues/ajouter', compact('unMedicament', 'titrevue', 'erreur'));
+            $unServiceMedicament->insertMedicament($id_famille, $depot_legal, $nom_commercial,$effets,$contre_indication,$prix_echantillon);
+
+            return redirect('/getListeMedicament');
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
@@ -45,22 +51,22 @@ class ListeController
         }
     }
 
-    public function validateMedicament()
+    public function validateMedicament2()
     {
         try {
             $erreur = "";
 
             $id_medicament = Request::input('id_medicament');
+            $id_famille = Request::input('id_famille');
             $depot_legal = Request::input('depot_legal');
             $nom_commercial = Request::input('nom_commercial');
             $effets = Request::input('effets');
             $contre_indication = Request::input('contre_indication');
             $prix_echantillon = Request::input('prix_echantillon');
-
             $unServiceMedicament = new ServiceMedicaments();
-                $unServiceMedicament->insertMedicament($id_medicament, $depot_legal, $nom_commercial,$effets,$contre_indication,$prix_echantillon);
+            $unServiceMedicament->modifierMedicament($id_medicament,$id_famille, $depot_legal, $nom_commercial,$effets,$contre_indication,$prix_echantillon);
 
-            return redirect('/getListeFrais');
+            return redirect('/getListeMedicament');
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
@@ -78,7 +84,8 @@ class ListeController
             $id_visiteur = Session::get('id');
             $unServiceMedicaments = new ServiceMedicaments();
             $mesMedicaments = $unServiceMedicaments->getMedicaments();
-            return view('vues/ajouter', compact('mesMedicaments', 'titrevue', 'erreur', 'id_visiteur'));
+            $familles = $unServiceMedicaments->getFamille();
+            return view('vues/ajouter', compact('mesMedicaments', 'titrevue', 'erreur','familles'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
@@ -87,5 +94,43 @@ class ListeController
             return view('vues/error', compact('erreur'));
         }
     }
+
+    public function modifMedicament($id_medicament)
+    {
+        try {
+            $monErreur = "";
+            $erreur = "";
+            $UnServiceMedicaments = new ServiceMedicaments();
+            $unMedicament = $UnServiceMedicaments->getById($id_medicament);
+            $familles = $UnServiceMedicaments->getFamille();
+            $titrevue = "Modification d'une formulation de médicaments";
+            return view('vues/modifier', compact('unMedicament', 'titrevue', 'erreur',"familles"));
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
+    public function supprimeMedicament($id_medicament)
+    {
+        try {
+            $erreur = "";
+            $serviceMedicaments = new ServiceMedicaments();
+            $serviceMedicaments->supprimerMedicament($id_medicament);
+            $serviceMedicaments = new ServiceMedicaments();
+            $mesMedicaments = $serviceMedicaments->getMedicaments();
+            return view('vues/liste', compact('mesMedicaments', 'erreur'));
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
 
 }
