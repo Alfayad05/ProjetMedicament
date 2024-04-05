@@ -27,10 +27,14 @@ Route::get('/getLogout', [LoginController::class, 'signOut']);
 
 Route::get('/getListeMedicament', [ListeController::class, 'getListeMedicaments']);
 Route::get('/modifierMedicament/{id}', [ListeController::class, 'modifMedicament']);
+Route::get('/interagirMedicament/{id}', [ListeController::class, 'getInteraction']);
 Route::post('/validerMedicament2', [ListeController::class, 'validateMedicament2']);
 
-
+Route::get('/ajouterInteraction{id}', [ListeController::class, 'ajouterInter']);
 Route::get('/ajouterMedicament', [ListeController::class, 'addMedicament']);
 Route::post('/validerMedicament', [ListeController::class, 'validateMedicament']);
+Route::post('/validerInteraction', [ListeController::class, 'validerInteraction']);
+
 
 Route::get('/supprimerMedicament/{id}', [ListeController::class, 'supprimeMedicament']);
+Route::get('/supprimerInteraction/{id}', [ListeController::class, 'supprimerInteraction']);

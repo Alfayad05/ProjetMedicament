@@ -7,10 +7,9 @@
         <div class="form-horizontal">
             <input type="hidden" name="id_medicament" value=""/>
 
-
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">ID Famille :</label>
-                <div class="col-md-2 col-sm-2">
+                <div class="col-md-4 col-sm-4">
                     <select name="id_famille" class="form-control" required>
                         <option value="" disabled selected>Sélectionnez une famille</option>
                         @foreach($familles as $famille)
@@ -52,6 +51,18 @@
                 <label class="col-md-3 col-sm-3 control-label">Prix Échantillon :</label>
                 <div class="col-md-3 col-sm-3">
                     <input type="number" class="form-control"  name="prix_echantillon" value="" placeholder="Prix Échantillon" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 col-sm-3 control-label">Médicament interagissant :</label>
+                <div class="col-md-4 col-sm-4">
+                    <select name="med_id_medicament" class="form-control">
+                        <option value="" disabled selected>Sélectionnez un médicament</option>
+                        @foreach($medicaments as $medicament)
+                            <option value="{{ $medicament->id_medicament }}">{{ $medicament->nom_commercial }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 
