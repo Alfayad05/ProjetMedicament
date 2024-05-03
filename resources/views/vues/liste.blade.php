@@ -35,6 +35,7 @@
                         <span class="glyphicon glyphicon-link" data-toggle="tooltip" data-placement="top" title="Intéragir"></span>
                     </a>
                 </td>
+
                 <td style="text-align:center;">
                     <a class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Supprimer" onclick="javascript:if (confirm('Suppression confirmée ?')) { window.location ='{{ url('/supprimerMedicament') }}/{{ $unMedicament->id_medicament }}'; }"></a>
                 </td>

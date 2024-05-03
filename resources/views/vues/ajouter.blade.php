@@ -3,19 +3,20 @@
 
     {!! Form::open(['url' => 'validerMedicament']) !!}
     <div class="col-md-12 col-sm-12 well well-md">
-        <center><h1>Formulaire d'ajouts de médicaments</h1></center>
+        <center><h1>Formulaire de Médicament</h1></center>
         <div class="form-horizontal">
             <input type="hidden" name="id_medicament" value=""/>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-3 control-label">ID Médicament :</label>
+                <div class="col-md-2 col-sm-2">
+                    <input type="text" name="id_medicament" value="" class="form-control" placeholder="ID Médicament" required autofocus>
+                </div>
+            </div>
 
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">ID Famille :</label>
-                <div class="col-md-4 col-sm-4">
-                    <select name="id_famille" class="form-control" required>
-                        <option value="" disabled selected>Sélectionnez une famille</option>
-                        @foreach($familles as $famille)
-                            <option value="{{ $famille->id_famille }}">{{ $famille->lib_famille }}</option>
-                        @endforeach
-                    </select>
+                <div class="col-md-2  col-sm-2">
+                    <input type="text" name="id_famille" value="" class="form-control" placeholder="ID Famille" required>
                 </div>
             </div>
 
@@ -36,7 +37,7 @@
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">Effet :</label>
                 <div class="col-md-6 col-sm-6">
-                    <textarea class="form-control" name="effets" placeholder="Effets" required></textarea>
+                    <textarea class="form-control" name="effet" placeholder="Effet" required></textarea>
                 </div>
             </div>
 
@@ -50,19 +51,7 @@
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">Prix Échantillon :</label>
                 <div class="col-md-3 col-sm-3">
-                    <input type="number" class="form-control"  name="prix_echantillon" value="" placeholder="Prix Échantillon" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-3 col-sm-3 control-label">Médicament interagissant :</label>
-                <div class="col-md-4 col-sm-4">
-                    <select name="med_id_medicament" class="form-control">
-                        <option value="" disabled selected>Sélectionnez un médicament</option>
-                        @foreach($medicaments as $medicament)
-                            <option value="{{ $medicament->id_medicament }}">{{ $medicament->nom_commercial }}</option>
-                        @endforeach
-                    </select>
+                    <input type="currency" class="form-control"  name="prix_echantillon" value="" placeholder="Prix Échantillon" required>
                 </div>
             </div>
 

@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-    <a href="{{ url('/ajouterInteraction') }}" class="btn btn-primary">Ajouter une interaction</a>
-    <a href="{{ url('/ajouterInteraction') }}/{{ $uninteragir->id_medicament }}"class="btn btn-primary">Ajouter une interaction</a>
+
     <table class="table table-bordered table-striped table-responsive">
         <thead>
         <tr>
